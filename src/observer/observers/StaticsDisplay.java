@@ -1,21 +1,25 @@
 package observer.observers;
 
-import observer.Subject;
+import observer.WeatherData;
+
+import java.util.Observable;
+import java.util.Observer;
 
 public class StaticsDisplay implements Observer, DisplayElement{
-    private final Subject subject;
+    private final WeatherData weatherData;
     private float min = Float.NaN;
     private float max = Float.NaN;
     private float sum = 0;
     private int count = 0;
 
-    public StaticsDisplay(Subject subject){
-        this.subject = subject;
-        subject.registerObserver(this);
+    public StaticsDisplay(WeatherData weatherData){
+        this.weatherData = weatherData;
+        weatherData.addObserver(this);
     }
 
     @Override
-    public void update(float temp, float humidity, float pressure) {
+    public void update(Observable obs, Object arg) {
+        float temp = weatherData.getTemperature();
         if (count == 0){
             max = temp;
             min = temp;
