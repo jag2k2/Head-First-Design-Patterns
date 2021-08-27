@@ -1,7 +1,8 @@
 package observer;
 
+import observer.headfirst.WeatherData;
 import org.junit.jupiter.api.*;
-import observer.observers.*;
+import observer.headfirst.observers.*;
 
 class WeatherDataTest {
     private WeatherData weatherData;
